@@ -1,20 +1,11 @@
-import { JiraStrategy } from "./classes/JiraStrategy.js";
-import { TaskManagerStategy } from "./classes/TaskManager.js";
-import { WrikeStrategy } from "./classes/WrikeStrategy.js";
+import User from "./classes/User.js";
 
-// create strategy
-const currentStrategy = new JiraStrategy();
+// create the first user
+const user1 = new User("John Doe", 30);
+console.log(user1);
 
-// create the task manager
-const taskManager = new TaskManagerStategy(currentStrategy);
-
-taskManager.login();
-taskManager.createTask();
-
-// change the strategy (change the platform)
-const newStrategy = new WrikeStrategy();
-taskManager.setStrategy(newStrategy);
-
-// still we are using same functions but behaviour is different and unique according to each platforms
-taskManager.login();
-taskManager.createTask();
+// clone the first user to create a second user and change the fields of the second user as we want without affecting the first user
+const user2 = user1.clone();
+user2.name = "Jeral Sandeeptha";
+user2.age = 25;
+console.log(user2);
